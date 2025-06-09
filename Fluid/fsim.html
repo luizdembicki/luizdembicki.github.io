@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fluid Simulation</title>
+  </head>
+  <style>
+    canvas {
+      width: 500px;
+      height: 500px;
+      image-rendering: pixelated;
+      border: 1px solid black;
+      background-color: #1d80f1;
+      position: relative;
+      margin: 3%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #221515;
+    }
+  </style>
+  <body>
+    <div
+      style="
+        color: rgb(228, 228, 228);
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 0.01%;
+        margin-bottom: 0.01%;
+        position: relative;
+        left: 0;
+        top: 0;
+        z-index: 10;
+      "
+    >
+      <h2 style="text-align: center">
+        Navier Stokes, simplified:
+        <hr
+          style="
+            width: 0.1%;
+            border: 0;
+            border-top: 1px solid #888;
+            margin: 1px auto 10px auto;
+          "
+        />
+        <math display="block" class="tml-display" style="display: block math">
+          <mrow>
+            <mfrac>
+              <mrow>
+                <mi>D</mi>
+                <mi>u</mi>
+              </mrow>
+              <mrow>
+                <mi>D</mi>
+                <mi>t</mi>
+              </mrow>
+            </mfrac>
+            <mo>=</mo>
+            <mo form="prefix" stretchy="false">−</mo>
+            <mover>
+              <mo lspace="0em" rspace="0em" style="font-weight: bold">∇</mo>
+              <mo stretchy="true" style="math-style: normal; math-depth: 0"
+                >→</mo
+              >
+            </mover>
+            <mi>P</mi>
+            <mo>+</mo>
+            <mi>ρ</mi>
+            <mover>
+              <mi>g</mi>
+              <mo stretchy="true" style="math-style: normal; math-depth: 0"
+                >→</mo
+              >
+            </mover>
+            <mo>+</mo>
+            <mi>μ</mi>
+            <msup>
+              <mo lspace="0em" rspace="0em" style="font-weight: bold">∇</mo>
+              <mn>2</mn>
+            </msup>
+            <mover>
+              <mi>V</mi>
+              <mo stretchy="true" style="math-style: normal; math-depth: 0"
+                >→</mo
+              >
+            </mover>
+          </mrow>
+        </math>
+      </h2>
+      <div></div>
+      <h2 style="text-align: center">
+        Continuity equation:
+        <hr
+          style="
+            width: 60%;
+            border: 0;
+            border-top: 1px solid #888;
+            margin: 1px auto 10px auto;
+          "
+        />
+
+        <math display="block" class="tml-display" style="display: block math">
+          <mrow>
+            <mover>
+              <mo lspace="0em" rspace="0em" style="font-weight: bold">∇</mo>
+              <mo stretchy="true" style="math-style: normal; math-depth: 0"
+                >→</mo
+              >
+            </mover>
+            <mo>⋅</mo>
+            <mover>
+              <mi>V</mi>
+              <mo stretchy="true" style="math-style: normal; math-depth: 0"
+                >→</mo
+              >
+            </mover>
+            <mo>=</mo>
+            <mn>0</mn>
+          </mrow>
+        </math>
+      </h2>
+      <a
+        href="https://www.dgp.toronto.edu/public_user/stam/reality/Research/pdf/GDC03.pdf"
+        >Based</a
+      >
+    </div>
+    <canvas id="canvas"></canvas>
+
+    <!-- Content goes here -->
+
+    <script src="fsim.js"></script>
+  </body>
+</html>

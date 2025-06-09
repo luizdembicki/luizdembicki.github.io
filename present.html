@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script charset="utf-8" src="node_modules/neutriumjs.thermo.iapws97/dist/neutriumJS.thermo.IAPWS97.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mollier Diagram - Homepage">
+    <title>Water Pressure Enthalpy Diagram</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>Pressure-Enthalpy Diagram – Water (IAPWS-IF97)</h1>
+        <div id="phDiagram"></div>
+        
+        <script>
+          const P_MIN = 0.01;     // MPa
+          const P_MAX = 22.064;   // MPa (critical)
+          const H_MIN = 100;      // kJ/kg
+          const H_MAX = 3500;     // kJ/kg
+        
+          const pressureSteps = 100;
+          const enthalpySteps = 100;
+        
+          const pressures = Array.from({ length: pressureSteps }, (_, i) =>
+            P_MIN * Math.pow(P_MAX / P_MIN, i / (pressureSteps - 1))
+          );
+          const enthalpies = Array.from({ length: enthalpySteps }, (_, i) =>
+            H_MIN + (H_MAX - H_MIN) * i / (enthalpySteps - 1)
+          );
+        
+          const sat_liquid = { x: [], y: [], name: 'Saturated Liquid', mode: 'lines', line: { color: 'blue' }, type: 'scatter' };
+          const sat_vapor  = { x: [], y: [], name: 'Saturated Vapor',  mode: 'lines', line: { color: 'red' },  type: 'scatter' };
+        
+          const superheated = {
+            x: [],
+            y: [],
+            text: [],
+            mode: 'markers',
+            type: 'scatter',
+            name: 'Superheated Region',
+            marker: { size: 2, color: 'rgba(0,150,0,0.5)' }
+          };
+        
+          // Fill in saturation lines and superheated region
+          pressures.forEach(p => {
+            try {
+              const sat = NeutriumJS.thermo.IAPWS97.saturationProperties(p);
+              sat_liquid.x.push(sat.liquid.h);
+              sat_liquid.y.push(p);
+              sat_vapor.x.push(sat.vapour.h);
+              sat_vapor.y.push(p);
+            } catch (err) {
+              // Skip saturation failure (e.g., critical point)
+            }
+        
+            enthalpies.forEach(h => {
+              try {
+                const state = NeutriumJS.thermo.IAPWS97.getStatePH(p, h);
+                superheated.x.push(h);
+                superheated.y.push(p);
+                superheated.text.push(`T = ${state.T.toFixed(1)} K<br>s = ${state.s.toFixed(3)} kJ/kg·K`);
+              } catch (err) {
+                // Invalid state, skip
+              }
+            });
+          });
+        
+          const layout = {
+            title: 'Pressure-Enthalpy Diagram (Water)',
+            xaxis: {
+              title: 'Enthalpy (kJ/kg)',
+              range: [H_MIN, H_MAX],
+              gridcolor: '#eee'
+            },
+            yaxis: {
+              title: 'Pressure (MPa)',
+              type: 'log',
+              autorange: 'reversed',
+              gridcolor: '#eee'
+            },
+            legend: { x: 0.02, y: 0.98 },
+            plot_bgcolor: '#f9f9f9',
+            paper_bgcolor: '#fff',
+            hovermode: 'closest'
+          };
+        
+          Plotly.newPlot('phDiagram', [sat_liquid, sat_vapor, superheated], layout);
+        </script>
+                    
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Luiz Dembicki.</p>
+    </footer>
+</body>
+</html>
