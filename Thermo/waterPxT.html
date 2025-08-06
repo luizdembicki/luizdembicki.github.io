@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script charset="utf-8" src="node_modules/neutriumjs.thermo.iapws97/dist/neutriumJS.thermo.IAPWS97.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="/Thermo/thermo.js"></script>
+    <script src="/Thermo/waterPxT.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mollier Diagram - Homepage">
+    <title>Water Pressure Temperature Diagram</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>Pressure-Temperature Diagram – Water (IAPWS-IF97)</h1>
+        <div id="PTDiagram"></div>
+        
+        <script>
+          const P_MIN = 1;     // Pa
+          const P_MAX = 1e3 * 1e6;   // Pa , 1 GPa
+          const T_MIN = 200;      // K
+          const T_MAX = 800;     // K
+
+          // Vapour boundary 623.15K @ P=16.5292 MPa < T < 863.15K @ 100MPa https://doi.org/10.1115/1.483186
+          
+          const vapourBoundaryTemps = Array.from({ length: 1000 }, (_, i) =>
+           273.15 + i * (863.15 - 273.15) / (1000 - 1));
+
+          var vapourBoundaryLine = {
+            x: vapourBoundaryTemps,
+            y: vapourBoundaryTemps.map((x) => vapourBoundary(x) / 1e6 ), // Convert Pa to MPa
+            type: 'scatter',
+            name: 'Vapour Boundary'
+          };
+
+          const sublimationBoundaryTemps = Array.from({ length: 1000 }, (_, i) =>
+           200 + i * (273.15 - 200) / (1000 - 1));
+
+          var sublimationBoundaryLine = {
+            x: sublimationBoundaryTemps,
+            y: sublimationBoundaryTemps.map((x) => sublimationBoundary(x) / 1e6 ), // Convert Pa to MPa
+            type: 'scatter',
+            name: 'Sublimation Boundary'
+          };
+
+          const iceBoundaryTemps = Array.from({ length: 1e3 }, (_, i) =>
+           200 + i * (273.16 - 200) / (1e3 - 1));
+
+          var iceBoundaryLine = {
+            x: iceBoundaryTemps,
+            y:  iceBoundaryTemps.map((x) => iceBoundary(x) / 1e6 ), // Convert Pa to MPa
+            mode: 'lines',
+            name: 'Ice Boundary'
+          };
+
+          const layout = {
+            title: 'Pressure-Temperature Diagram (Water)',
+            xaxis: {
+              title: 'Temperature (K)',
+              range: [T_MIN, T_MAX],
+              gridcolor: '#eee'
+            },
+            yaxis: {
+              title: 'Pressure (MPa)',
+              type: 'log', // <-- Add this line
+              range: (P_MIN, P_MAX), // log10(1) = 0, log10(1000) = 3
+              gridcolor: '#eee'
+            },
+            legend: { x: 0.5, y: 0.2 },
+            plot_bgcolor: '#f9f9f9',
+            paper_bgcolor: '#fff',
+            hovermode: 'closest'
+          };
+          
+          Plotly.newPlot('PTDiagram', [vapourBoundaryLine, sublimationBoundaryLine, iceBoundaryLine], layout, {
+            responsive: true,
+            displayModeBar: false
+          });
+
+        </script>
+                    
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Luiz Dembicki.</p>
+    </footer>
+</body>
+</html>

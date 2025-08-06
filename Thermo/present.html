@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script charset="utf-8" src="node_modules/neutriumjs.thermo.iapws97/dist/neutriumJS.thermo.IAPWS97.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="/Thermo/thermo.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mollier Diagram - Homepage">
+    <title>Water Pressure Temperature Diagram</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>Pressure-Temperature Diagram – Water (IAPWS-IF97)</h1>
+        <div id="PTDiagram"></div>
+        
+        <script>
+          const P_MIN = 0.01;     // MPa
+          const P_MAX = 1;   // MPa (critical)
+          const T_MIN = 0;      // K
+          const T_MAX = 600;     // K
+        
+          const pressureSteps = 100;
+          const temperatureSteps = 100;
+        
+          const pressures = Array.from({ length: pressureSteps }, (_, i) =>
+            P_MIN * Math.pow(P_MAX / P_MIN, i / (pressureSteps - 1))
+          );
+          const temps = Array.from({ length: temperatureSteps }, (_, i) =>
+            T_MIN + (T_MAX - T_MIN) * i / (temperatureSteps - 1)
+          );
+        
+          var line = {
+            x: temps,
+            y: temps.map((x) => Water.Antoine(x) / 1e6),
+            type: 'scatter'
+          };
+          console.log(line);
+
+          const layout = {
+            title: 'Pressure-Temperature Diagram (Water)',
+            xaxis: {
+              title: 'Temperature (K)',
+              range: [T_MIN, T_MAX],
+              gridcolor: '#eee'
+            },
+            yaxis: {
+              title: 'Pressure (MPa)',
+              range: [P_MIN, P_MAX],
+              gridcolor: '#eee'
+            },
+            legend: { x: 0.02, y: 0.98 },
+            plot_bgcolor: '#f9f9f9',
+            paper_bgcolor: '#fff',
+            hovermode: 'closest'
+          };
+        
+          Plotly.newPlot('PTDiagram', line);
+        </script>
+                    
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Luiz Dembicki.</p>
+    </footer>
+</body>
+</html>
