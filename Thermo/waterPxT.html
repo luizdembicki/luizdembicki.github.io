@@ -20,7 +20,7 @@
           const P_MIN = 1;     // Pa
           const P_MAX = 1e3 * 1e6;   // Pa , 1 GPa
           const T_MIN = 200;      // K
-          const T_MAX = 800;     // K
+          const T_MAX = 1000;     // K
 
           // Vapour boundary 623.15K @ P=16.5292 MPa < T < 863.15K @ 100MPa https://doi.org/10.1115/1.483186
           
@@ -31,7 +31,9 @@
             x: vapourBoundaryTemps,
             y: vapourBoundaryTemps.map((x) => vapourBoundary(x) / 1e6 ), // Convert Pa to MPa
             type: 'scatter',
-            name: 'Vapour Boundary'
+            name: 'Liquid-Vapour Boundary',
+            "fill":"tozeroy",
+            "fillcolor":"rgba(0, 0, 0, 0.2)" 
           };
 
           const sublimationBoundaryTemps = Array.from({ length: 1000 }, (_, i) =>
@@ -41,7 +43,9 @@
             x: sublimationBoundaryTemps,
             y: sublimationBoundaryTemps.map((x) => sublimationBoundary(x) / 1e6 ), // Convert Pa to MPa
             type: 'scatter',
-            name: 'Sublimation Boundary'
+            name: 'Solid-Vapour Boundary',
+            "fill":"tozeroy",
+            "fillcolor":"rgba(0, 0, 0, 0.2)"
           };
 
           const iceBoundaryTemps = Array.from({ length: 1e3 }, (_, i) =>
@@ -51,7 +55,9 @@
             x: iceBoundaryTemps,
             y:  iceBoundaryTemps.map((x) => iceBoundary(x) / 1e6 ), // Convert Pa to MPa
             mode: 'lines',
-            name: 'Ice Boundary'
+            name: 'Solid-Liquid Boundary',
+            "fill":"tonexty",
+            "fillcolor":"rgba(0, 144, 200, 0.2)"
           };
 
           const layout = {
