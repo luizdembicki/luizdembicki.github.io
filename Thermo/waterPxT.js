@@ -34,7 +34,7 @@ function sublimationBoundary(T) {
 } // test case T = 230.0 K, P = 8.94735 Pa
 // console.log("Sublimation Boundary at 230.0K: %s Pa", sublimationBoundary(230.0)); // Should print 8.94735 Pa
 
-// Ice boundary Ih https://doi.org/10.1063
+// Ice boundary Ih https://doi.org/10.1063/1.3657937
 function iceBoundary(T) {
     const Tastk = 273.16; // K 
     const Pastk = 611.657; // Pa
