@@ -13,18 +13,16 @@
 		<script src="/Thermo/waterPxT.js"></script>
 		<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="style/style.css" />
 	</head>
-	<body class="is-preload">
+	<body class="about-body">
 
 		<!-- Main -->
-			<div id="main">
+			<div class="main">
 				<!-- One -->
-	        <h1>Pressure-Temperature Diagram</h1>
-			<p>	Pressure-temperature diagrams are very helpful when it comes to determining what is the present phase in a system, specially to chemistry where we tend to work with constant volume.</p>
-
-			<p> This diagram was made using two resources: <href = https://doi.org/10.1115/1.483186>Industrial Formulation 1997 for the Thermodynamic Properties of Water and Steam</href>The IAPWS , and <href = (https://doi.org/10.1063/1.3657937)>New Equations for the Sublimation Pressure
-and Melting Pressure of H2O Ice Ih</href>. The equations programmed in Javascript and plotted using the Plotly library.</p>
+        <h1>Pressure-Temperature Diagram</h1>
+        <p>Pressure-temperature diagrams are very helpful when it comes to determining what is the present phase in a system, specially to chemistry where we tend to work with constant volume.</p>
+        <p>This diagram was made using two resources: <a href="https://doi.org/10.1115/1.483186">Industrial Formulation 1997 for the Thermodynamic Properties of Water and Steam</a> The IAPWS, and <a href="https://doi.org/10.1063/1.3657937">New Equations for the Sublimation Pressure and Melting Pressure of H2O Ice Ih</a>. The equations programmed in Javascript and plotted using the Plotly library.</p>
         <div id="PTDiagram">
         
         <script>
@@ -44,7 +42,7 @@ and Melting Pressure of H2O Ice Ih</href>. The equations programmed in Javascrip
             type: 'scatter',
             name: 'Liquid-Vapour Boundary',
             "fill":"tozeroy",
-            "fillcolor":"rgba(0, 0, 0, 0.2)" 
+            "fillcolor":"rgba(255, 0, 0, 0.2)" 
           };
 
           const sublimationBoundaryTemps = Array.from({ length: 1000 }, (_, i) =>
@@ -56,7 +54,7 @@ and Melting Pressure of H2O Ice Ih</href>. The equations programmed in Javascrip
             type: 'scatter',
             name: 'Solid-Vapour Boundary',
             "fill":"tozeroy",
-            "fillcolor":"rgba(0, 0, 0, 0.2)"
+            "fillcolor":"rgba(255, 0, 0, 0.2)"
           };
 
           const iceBoundaryTemps = Array.from({ length: 1e3 }, (_, i) =>
@@ -85,8 +83,9 @@ and Melting Pressure of H2O Ice Ih</href>. The equations programmed in Javascrip
               gridcolor: '#eee'
             },
             legend: { x: 0.5, y: 0.2 },
-            plot_bgcolor: '#f9f9f9',
-            paper_bgcolor: '#fff',
+            plot_bgcolor: '#202020',
+            paper_bgcolor: '#202020',
+            font: { color: '#fff' },
             hovermode: 'closest'
           };
           
@@ -98,21 +97,19 @@ and Melting Pressure of H2O Ice Ih</href>. The equations programmed in Javascrip
         </script>
 		</div> 
         </section>
-		<!-- Footer -->
-			<footer id="footer">
-				Go back to the <a href="index.html">Homepage</a>.
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://www.instagram.com/luiz_dembicki/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="https://github.com/luizdembicki" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="https://www.linkedin.com/in/luiz-dembicki/" class="icon brands fa-linkedin"><span class="label">Github</span></a></li>
-						<li><a href="mailto:luiz.dembicki@ymail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Luiz Dembicki, 2024</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+        <!-- Footer -->
+        <div class="end">
+          <div style="padding: 10px">
+            Go back to the <a href="index.html">Homepage</a>.
+          </div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/luiz-dembicki/"><img src="./images/icons/linkedin.svg" alt="LinkedIn profile" /></a></li>
+            <li><a href="https://github.com/luizdembicki"><img src="./images/icons/github.svg" alt="GitHub profile" /></a></li>
+            <li><a href="https://www.instagram.com/luiz_dembicki/"><img src="./images/icons/instagram.svg" alt="Instagram profile" /></a></li>
+          </ul>
+          <p>Luiz Dembicki</p>
+          <p>2025</p>
+        </div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

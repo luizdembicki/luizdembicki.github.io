@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
+html {
+  height: 100%;
+}
+
+.main-body {
+  height: 95%;
+  background-color: #031e5c;
+  background-image: linear-gradient(#940707 0%, #031e5c 100%);
+  margin: 0;
+  background-repeat: no-repeat;
+  font-size: large;
+}
+
+.about-body {
+  background-color: #202020;
+  margin: 0;
+}
+
+.end, .end-main, .about,
+.projects,
+.like, .intro, .main, .about-me {
+  color: azure;
+}
+.end a, .end-main a, .about a,
+.projects a,
+.like a, .intro a, .main a, .about-me a {
+  color: azure;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.5s ease-in-out;
+}
+.end a:hover, .end-main a:hover, .about a:hover,
+.projects a:hover,
+.like a:hover, .intro a:hover, .main a:hover, .about-me a:hover {
+  color: #00aeff;
+  text-decoration: underline;
+  text-shadow: 3px 3px #940707;
+}
+
+.intro, .main, .about-me {
+  font-family: "Quicksand", sans-serif;
+}
+
+.end, .end-main, .about,
+.projects,
+.like {
+  font-family: "Yellowtail", cursive;
+}
+
+.about-me {
+  padding: 1%;
+}
+.about-me .img-container {
+  text-align: center;
+}
+.about-me .img-container img {
+  border-radius: 10%;
+  width: 150px;
+  height: 150px;
+}
+
+.main {
+  color: azure;
+}
+
+.intro {
+  text-align: center;
+  text-shadow: 3px 3px #031e5c;
+  padding-bottom: 10%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.about,
+.projects,
+.like {
+  text-shadow: 3px 3px #031e5c;
+  width: 33%;
+  float: left;
+  text-align: center;
+}
+.about a:hover,
+.projects a:hover,
+.like a:hover {
+  transform: scale(1.1);
+}
+
+.end, .end-main {
+  text-shadow: 1px 1px #940707;
+  text-align: center;
+  bottom: 5px;
+  width: 100%;
+  font-size: larger;
+}
+.end ul, .end-main ul {
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+.end li, .end-main li {
+  display: inline-block;
+  padding: 5px;
+  width: 50px;
+  filter: invert(0.95);
+  text-align: center;
+}
+.end li:hover, .end-main li:hover {
+  transform: scale(1.5) rotateZ(-360deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.end-main {
+  position: absolute;
+}
+
+.end-return a {
+  color: azure;
+  text-decoration: none;
+}
+.end-return a:hover {
+  color: #00aeff;
+  text-decoration: underline;
+  text-shadow: 3px 3px #940707;
+}
+
+/*# sourceMappingURL=style.css.map */

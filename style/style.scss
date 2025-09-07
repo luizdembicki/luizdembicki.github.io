@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
+
+html {
+  height: 100%;
+}
+
+.main-body {
+  height: 95%;
+  background-color: #031e5c;
+  // in case the browser doesn't support gradients
+  background-image: linear-gradient(#940707 0%, #031e5c 100%);
+  margin: 0;
+  background-repeat: no-repeat;
+  font-size: large;
+}
+
+.about-body {
+  background-color: #202020;
+  margin: 0;
+}
+
+%text {
+  color: azure;
+  a {
+    color: azure;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.5s ease-in-out;
+  }
+  a:hover {
+    color: #00aeff;
+    text-decoration: underline;
+    text-shadow: 3px 3px #940707;
+  }
+}
+
+%sans-serif {
+  @extend %text;
+  font-family: "Quicksand", sans-serif;
+}
+
+%cursive {
+  @extend %text;
+  font-family: "Yellowtail", cursive;
+}
+
+.about-me {
+  @extend %sans-serif;
+  padding: 1%;
+  .img-container {
+    text-align: center;
+    img {
+      border-radius: 10%;
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
+
+.main {
+  @extend %sans-serif;
+  color: azure;
+}
+
+.intro {
+  @extend %sans-serif;
+  text-align: center;
+  text-shadow: 3px 3px #031e5c;
+  padding-bottom: 10%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.about,
+.projects,
+.like {
+  @extend %cursive;
+  text-shadow: 3px 3px #031e5c;
+  width: 33%;
+  float: left;
+  text-align: center;
+  a:hover {
+    transform: scale(1.1);
+  }
+}
+
+.end {
+  @extend %cursive;
+  text-shadow: 1px 1px #940707;
+  text-align: center;
+  bottom: 5px;
+  width: 100%;
+  font-size: larger;
+  ul {
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+    padding: 5px;
+    width: 50px;
+    filter: invert(0.95);
+    text-align: center;
+  }
+  li:hover {
+    transform: scale(1.5) rotateZ(-360deg);
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.end-main {
+  @extend .end;
+  position: absolute;
+}
+.end-return {
+  a {
+    color: azure;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #00aeff;
+    text-decoration: underline;
+    text-shadow: 3px 3px #940707;
+  }
+}
