@@ -1,103 +1,110 @@
 @import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
+
+/* Base styles */
 html {
   height: 100%;
 }
 
+/* Main body */
 .main-body {
   height: 95%;
+  margin: 0;
+  font-size: large;
   background-color: #031e5c;
   background-image: linear-gradient(#940707 0%, #031e5c 100%);
-  margin: 0;
   background-repeat: no-repeat;
-  font-size: large;
 }
 
+/* About section */
 .about-body {
   background-color: #202020;
-  margin: 0;
+  margin: 20px;
 }
 
-.end, .end-main, .about,
-.projects,
-.like, .intro, .main, .about-me {
+/* Text colors */
+.end, .end-main, .about, .projects, .like, .intro, .main, .about-me {
   color: azure;
 }
-.end a, .end-main a, .about a,
-.projects a,
-.like a, .intro a, .main a, .about-me a {
+
+/* Link styles */
+.end a, .end-main a, .about a, .projects a, .like a, .intro a, .main a, .about-me a {
   color: azure;
   text-decoration: none;
   display: inline-block;
   transition: all 0.5s ease-in-out;
 }
-.end a:hover, .end-main a:hover, .about a:hover,
-.projects a:hover,
-.like a:hover, .intro a:hover, .main a:hover, .about-me a:hover {
+
+.end a:hover, .end-main a:hover, .about a:hover, .projects a:hover, .like a:hover, .intro a:hover, .main a:hover, .about-me a:hover {
   color: #00aeff;
   text-decoration: underline;
   text-shadow: 3px 3px #940707;
 }
 
+/* Font families */
 .intro, .main, .about-me {
   font-family: "Quicksand", sans-serif;
 }
 
-.end, .end-main, .about,
-.projects,
-.like {
+.end, .end-main, .about, .projects, .like {
   font-family: "Yellowtail", cursive;
 }
 
+/* About-me section */
 .about-me {
   padding: 1%;
 }
+
 .about-me .img-container {
   text-align: center;
 }
+
 .about-me .img-container img {
   border-radius: 10%;
   width: 150px;
   height: 150px;
 }
 
+/* Main section */
 .main {
   color: azure;
 }
 
+/* Intro section */
 .intro {
   text-align: center;
   text-shadow: 3px 3px #031e5c;
   padding-bottom: 10%;
 }
 
+/* Flex container */
 .container {
   width: 100%;
   height: 100%;
   display: flex;
 }
 
-.about,
-.projects,
-.like {
-  text-shadow: 3px 3px #031e5c;
+/* About, Projects, Like sections */
+.about, .projects, .like {
   width: 33%;
   float: left;
   text-align: center;
+  text-shadow: 3px 3px #031e5c;
 }
-.about a:hover,
-.projects a:hover,
-.like a:hover {
+
+.about a:hover, .projects a:hover, .like a:hover {
   transform: scale(1.1);
 }
 
+/* End sections */
 .end, .end-main {
-  text-shadow: 1px 1px #940707;
   text-align: center;
-  bottom: 5px;
   width: 100%;
+  bottom: 5px;
   font-size: larger;
+  text-shadow: 1px 1px #940707;
 }
+
 .end ul, .end-main ul {
   padding: 0;
   margin: 0 auto;
@@ -106,6 +113,7 @@ html {
   align-items: center;
   list-style: none;
 }
+
 .end li, .end-main li {
   display: inline-block;
   padding: 5px;
@@ -113,19 +121,23 @@ html {
   filter: invert(0.95);
   text-align: center;
 }
+
 .end li:hover, .end-main li:hover {
   transform: scale(1.5) rotateZ(-360deg);
   transition: all 0.5s ease-in-out;
 }
 
+/* End-main positioning */
 .end-main {
   position: absolute;
 }
 
+/* End-return link */
 .end-return a {
   color: azure;
   text-decoration: none;
 }
+
 .end-return a:hover {
   color: #00aeff;
   text-decoration: underline;
@@ -133,3 +145,42 @@ html {
 }
 
 /*# sourceMappingURL=style.css.map */
+* {box-sizing: border-box}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 2px solid #00aeff;
+  border-radius: 10px 10px 0px 0px;
+  background-color: #1c1c1c;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  color:azure;
+  font-size: 105%;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #a3a3a3;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #203239;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  border-top: none;
+}
