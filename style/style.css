@@ -143,10 +143,6 @@ html {
   text-decoration: underline;
   text-shadow: 3px 3px #940707;
 }
-
-/*# sourceMappingURL=style.css.map */
-* {box-sizing: border-box}
-
 /* Style the tab */
 .tab {
   overflow: hidden;
@@ -184,3 +180,7 @@ html {
   display: none;
   border-top: none;
 }
+
+/*# sourceMappingURL=style.css.map */
+* {box-sizing: border-box}
+
